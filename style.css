@@ -1,0 +1,108 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+  
+  body{
+    background: #17b5e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container{
+    position: relative;
+    top: -80px;
+    transform: skewY(-20deg);
+  }
+  
+  .container .cube{
+    position: relative;
+    z-index: 2;
+  }
+  
+  .container .cube div span{
+    width: 50px;
+    height: 50px;
+    background-color: #ddd9de;
+    position: relative;
+    display: inline-block;
+    z-index: calc(1 * var(--i));
+    transition: 1.5s;
+  }
+  
+  .container .cube div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    translate: calc(-70px * var(--x)) calc(-60px * var(--y ))
+  }
+  
+  .container .cube:nth-child(2){
+    z-index:1;
+    translate: -60px -60px;
+  }
+  
+  .container .cube:nth-child(3){
+    z-index:3;
+    translate: 60px 60px;
+  }
+  
+  .container .cube div span:before{
+    content:"";
+    background: #fff;
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    transform: skewY(45deg);
+    transform-origin: right;
+    left: -40px;
+     transition:1.5s;
+  }
+  
+  .container .cube div span:after{
+    content:"";
+    background: #f2f2f2;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    transform: skewX(45deg);
+    transform-origin: bottom;
+    left: 0px;
+    top: -40px;
+      transition:1.5s;
+  }
+  
+  .container .cube div span:hover{
+      transition:0s;
+    background: #7b00ff;
+    filter: drop-shadow(0 0 30px #8000ff);
+  }
+  
+  .container .cube div span:hover:before,
+  .container .cube div span:hover:after{
+    background: #7b00ff;
+    filter: drop-shadow(0 0 30px #8000ff);
+    transition:0s;
+  }
+  
+  .container .cube div span:hover:before,
+  .container .cube div span:hover:after{
+    background: #7b00ff;
+    transition:0s;
+  }
+  
+  @keyframes animate {
+    0%{
+    filter: hue-rotate(0deg);
+    }
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  .container{
+    animation: animate 5s linear infinite;
+  }
